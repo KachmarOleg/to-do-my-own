@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+
+  .add-todo-field {
+    padding: 14px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    width: 20rem;
+    margin-bottom: 40px;
+  }
+
+  .add-btn {
+    background: #ccf;
+    color: #444;
+    border: 1px solid #ccf;
+    border-radius: 5px;
+    padding: 12px;
+  }
+
+  .todoItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: darkslategray;
+    padding: 4px 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: left;
+
+    .remove_btn {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background: rgb(0, 0, 0);
+      padding: 5px;
+    }
+  }
+}
+
+.checkbox-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  display: none;
+}
+
+/* Стилізація кастомного чекбокса */
+.checkbox-custom {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #333333;
+  display: inline-block;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+
+/* Додаємо галочку при виборі */
+.checkbox-container input:checked + .checkbox-custom {
+  position: relative;
+  background: #333;
+}
+
+input[type="checkbox"]:checked + .checkbox-custom::after {
+  content: "✔";
+  position: absolute;
+  left: 2px;
+  top: -1px;
+  color: white;
+  font-size: 14px;
+}
+
+.is-done {
+  text-decoration-line: line-through;
+}
