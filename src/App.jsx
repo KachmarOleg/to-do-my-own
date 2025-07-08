@@ -27,7 +27,16 @@ function App() {
 
   function handleUpdateItem(id) {
     console.log("Edit clicked for item id:", id);
-    // Тут ти можеш реалізувати логіку редагування
+
+    const item = list.find((item) => item.id === id);
+
+    setList((list) =>
+      list.map((item) =>
+        item.id === id ? { ...item, is_edit_visible: true } : item
+      )
+    );
+
+    console.log(list);
   }
 
   return (
@@ -42,6 +51,7 @@ function App() {
             dataId={todoItem.id}
             onRemove={handleRemoveItem}
             onEdit={handleUpdateItem}
+            isEditInputVisible={todoItem.is_edit_visible}
           >
             {todoItem.Title}
           </ToDoItem>

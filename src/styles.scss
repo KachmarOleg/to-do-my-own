@@ -1,40 +1,136 @@
 body {
   font-family: Arial, sans-serif;
+  background-color: #1e1e2f;
+  color: #ddd;
 
   .add-todo-field {
     padding: 14px;
     margin-right: 10px;
     border-radius: 5px;
     border: 1px solid #444;
+    background-color: #2a2a3b;
+    color: #fff;
     width: 20rem;
     margin-bottom: 40px;
+
+    &::placeholder {
+      color: #888;
+    }
   }
 
   .add-btn {
-    background: #ccf;
-    color: #444;
-    border: 1px solid #ccf;
+    background: #4f7dff;
+    color: #fff;
+    border: 1px solid #4f7dff;
     border-radius: 5px;
     padding: 12px;
+    cursor: pointer;
+
+    &:hover {
+      background: #3c65d1;
+      border-color: #3c65d1;
+    }
   }
 
   .todoItem {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background: darkslategray;
-    padding: 4px 10px;
+    background: #2c2f3a;
+    padding: 8px 14px;
     margin-bottom: 20px;
     border-radius: 5px;
+    min-height: 57px;
     text-align: left;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      transform: translateX(-100%);
+      display: block;
+      height: 100%;
+      width: 90px;
+    }
+
+    &:hover {
+      .edit_btn {
+        display: inline-block;
+      }
+    }
+
+    h3 {
+      margin: 10px 0;
+    }
+
+    .edit-field {
+      padding: 12px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #555;
+      background-color: #2a2a3b;
+      color: #fff;
+      width: 18rem;
+
+      &::placeholder {
+        color: #777;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #4f7dff;
+        box-shadow: 0 0 4px #4f7dff66;
+      }
+    }
+
+    .edit_btn {
+      position: absolute;
+      left: -90px;
+      background: #f0b429;
+      color: #1c1c1c;
+      border: 1px solid #f0b429;
+      border-radius: 5px;
+      padding: 5px 10px;
+      margin-left: 8px;
+      cursor: pointer;
+      display: none;
+
+      &:hover {
+        background: #d69e17;
+        border-color: #d69e17;
+      }
+    }
+
+    .update_btn {
+      background: #4caf50;
+      color: #fff;
+      border: 1px solid #4caf50;
+      border-radius: 5px;
+      padding: 5px 10px;
+      margin-left: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background: #388e3c;
+        border-color: #388e3c;
+      }
+    }
 
     .remove_btn {
       position: absolute;
       top: 50%;
       right: 0;
       transform: translateY(-50%);
-      background: rgb(0, 0, 0);
-      padding: 5px;
+      background: #ff4d4f;
+      border: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background: #d9363e;
+      }
     }
   }
 }
@@ -45,37 +141,44 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
+
+  input[type="checkbox"] {
+    display: none;
+
+    &:checked + .checkbox-custom {
+      position: relative;
+      background: #4caf50;
+
+      &::after {
+        content: "✔";
+        position: absolute;
+        left: 2px;
+        top: -1px;
+        color: white;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .is-hidden {
+    display: none !important;
+  }
+
+  .is-visible {
+    display: inline-block;
+  }
 }
 
-.checkbox-container input[type="checkbox"] {
-  display: none;
-}
-
-/* Стилізація кастомного чекбокса */
 .checkbox-custom {
   width: 16px;
   height: 16px;
-  border: 2px solid #333333;
+  border: 1px solid #aaa;
   display: inline-block;
-  border-radius: 3px;
-  margin-right: 8px;
-}
-
-/* Додаємо галочку при виборі */
-.checkbox-container input:checked + .checkbox-custom {
-  position: relative;
-  background: #333;
-}
-
-input[type="checkbox"]:checked + .checkbox-custom::after {
-  content: "✔";
-  position: absolute;
-  left: 2px;
-  top: -1px;
-  color: white;
-  font-size: 14px;
+  margin-right: 12px;
+  background-color: #1e1e2f;
 }
 
 .is-done {
   text-decoration-line: line-through;
+  color: #888;
 }
