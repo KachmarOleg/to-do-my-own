@@ -25,7 +25,7 @@ function App() {
     setList(list.filter((item) => item.id !== id));
   }
 
-  function handleUpdateItem(id) {
+  function handleEditItem(id) {
     console.log("Edit clicked for item id:", id);
 
     const item = list.find((item) => item.id === id);
@@ -50,7 +50,7 @@ function App() {
             key={todoItem.id}
             dataId={todoItem.id}
             onRemove={handleRemoveItem}
-            onEdit={handleUpdateItem}
+            onEdit={handleEditItem}
             isEditInputVisible={todoItem.is_edit_visible}
           >
             {todoItem.Title}
