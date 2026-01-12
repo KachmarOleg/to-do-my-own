@@ -9,9 +9,14 @@ function ToDoItem({
   isEditInputVisible,
 }) {
   const [status, setStatus] = useState(false);
+  const [editValue, setEditValue] = useState(children);
 
   function handleChange() {
     setStatus(!status);
+  }
+
+  function handleInputChange(e) {
+    setEditValue(e.target.value);
   }
 
   return (
@@ -31,6 +36,8 @@ function ToDoItem({
           name="edit-item"
           className={`edit-field ${isEditInputVisible ? "" : "is-hidden"}`}
           placeholder="Update the title"
+          onChange={handleInputChange}
+          value={editValue}
         />
         {isEditInputVisible}
         <button
@@ -45,7 +52,7 @@ function ToDoItem({
           className={`update_btn ${
             isEditInputVisible ? "is-visible" : "is-hidden"
           }`}
-          onClick={() => onUpdate(dataId)}
+          onClick={() => onUpdate(dataId, editValue)}
         >
           Update
         </button>

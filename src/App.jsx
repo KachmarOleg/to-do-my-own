@@ -39,10 +39,12 @@ function App() {
     console.log(list);
   }
 
-  function handleUpdateItem(id) {
+  function handleUpdateItem(id, newTitle) {
     setList((list) =>
       list.map((item) =>
-        item.id === id ? { ...item, is_edit_visible: false } : item
+        item.id === id
+          ? { ...item, Title: newTitle, is_edit_visible: false }
+          : item
       )
     );
 
