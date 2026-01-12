@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-function ToDoItem({ children, dataId, onRemove, onEdit, isEditInputVisible }) {
+function ToDoItem({
+  children,
+  dataId,
+  onRemove,
+  onEdit,
+  onUpdate,
+  isEditInputVisible,
+}) {
   const [status, setStatus] = useState(false);
 
   function handleChange() {
@@ -38,6 +45,7 @@ function ToDoItem({ children, dataId, onRemove, onEdit, isEditInputVisible }) {
           className={`update_btn ${
             isEditInputVisible ? "is-visible" : "is-hidden"
           }`}
+          onClick={() => onUpdate(dataId)}
         >
           Update
         </button>

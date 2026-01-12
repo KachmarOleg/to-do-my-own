@@ -3,7 +3,7 @@ let todoList = [
     id: 0,
     Title: "To do 11",
     is_done: true,
-    is_edit_visible: false,
+    is_edit_visible: true,
   },
   {
     id: 1,

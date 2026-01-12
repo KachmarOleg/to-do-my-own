@@ -39,6 +39,16 @@ function App() {
     console.log(list);
   }
 
+  function handleUpdateItem(id) {
+    setList((list) =>
+      list.map((item) =>
+        item.id === id ? { ...item, is_edit_visible: false } : item
+      )
+    );
+
+    console.log(list);
+  }
+
   return (
     <>
       <h1>This is my first TO-DO list on React</h1>
@@ -51,6 +61,7 @@ function App() {
             dataId={todoItem.id}
             onRemove={handleRemoveItem}
             onEdit={handleEditItem}
+            onUpdate={handleUpdateItem}
             isEditInputVisible={todoItem.is_edit_visible}
           >
             {todoItem.Title}
